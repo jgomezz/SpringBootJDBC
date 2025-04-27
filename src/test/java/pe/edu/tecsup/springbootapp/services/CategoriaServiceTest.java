@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import pe.edu.tecsup.springbootapp.dto.CategoriaDTO;
 import pe.edu.tecsup.springbootapp.entities.Categoria;
 
 import java.util.List;
@@ -22,10 +23,9 @@ class CategoriaServiceTest {
 
         Boolean VALUE_EXPECTED = true;
 
-        List<Categoria> categorias = this.categoriaService.findAll();
+        List<CategoriaDTO> categorias = this.categoriaService.findAll();
 
         categorias.stream().forEach(cat -> log.info(cat.getNombre()));
-        //log.info(categorias.toString());
 
         assertEquals(VALUE_EXPECTED, !categorias.isEmpty());
 
