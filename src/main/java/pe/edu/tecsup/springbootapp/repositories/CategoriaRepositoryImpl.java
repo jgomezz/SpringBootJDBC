@@ -20,6 +20,9 @@ public class CategoriaRepositoryImpl implements CategoriaRepository {
         List<Categoria> categorias = new ArrayList<>();
 
         categorias.add(new Categoria(1L, "Computadoras", 1));
+        categorias.add(new Categoria(2L, "Memorias", 2));
+        categorias.add(new Categoria(3L, "Discos Duros", 3));
+        categorias.add(new Categoria(4L, "Mouse", 4));
 
         return categorias;
     }
