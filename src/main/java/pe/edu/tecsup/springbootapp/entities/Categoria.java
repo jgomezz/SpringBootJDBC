@@ -1,7 +1,10 @@
 package pe.edu.tecsup.springbootapp.entities;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
+
+@AllArgsConstructor
 @Data
 public class Categoria {
 
