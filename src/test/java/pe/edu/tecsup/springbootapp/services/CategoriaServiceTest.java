@@ -20,9 +20,14 @@ class CategoriaServiceTest {
     @Test
     void findAll() throws Exception {
 
+        Boolean VALUE_EXPECTED = true;
+
         List<Categoria> categorias = this.categoriaService.findAll();
 
-        log.info(categorias.toString());
+        categorias.stream().forEach(cat -> log.info(cat.getNombre()));
+        //log.info(categorias.toString());
+
+        assertEquals(VALUE_EXPECTED, !categorias.isEmpty());
 
     }
 }
