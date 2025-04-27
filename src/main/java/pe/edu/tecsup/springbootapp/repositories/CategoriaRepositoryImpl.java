@@ -1,13 +1,17 @@
 package pe.edu.tecsup.springbootapp.repositories;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 import pe.edu.tecsup.springbootapp.entities.Categoria;
 
-import java.util.ArrayList;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 
+@Slf4j
 @Repository
 public class CategoriaRepositoryImpl implements CategoriaRepository {
 
@@ -17,14 +21,27 @@ public class CategoriaRepositoryImpl implements CategoriaRepository {
     @Override
     public List<Categoria> findAll() throws Exception {
 
-        List<Categoria> categorias = new ArrayList<>();
+        log.info("Call findAll()");
 
-        categorias.add(new Categoria(1L, "Computadoras", 1));
-        categorias.add(new Categoria(2L, "Memorias", 2));
-        categorias.add(new Categoria(3L, "Discos Duros", 3));
-        categorias.add(new Categoria(4L, "Mouse", 4));
+        String sql = """
+                    SELECT * FROM categorias
+                """;
+
+        List<Categoria> categorias = this.jdbcTemplate.query(sql, new CategoriaRowMapper());
 
         return categorias;
     }
 
+}
+
+class CategoriaRowMapper implements RowMapper<Categoria>{
+
+    @Override
+    public Categoria mapRow(ResultSet rs, int rowNum) throws SQLException {
+        Categoria categoria = new Categoria();
+        categoria.setId(rs.getLong("id"));
+        categoria.setNombre(rs.getString("nombre"));
+        categoria.setOrden(rs.getInt("orden"));
+        return categoria;
+    }
 }
