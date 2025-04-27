@@ -8,6 +8,7 @@ import pe.edu.tecsup.springbootapp.repositories.CategoriaRepository;
 import pe.edu.tecsup.springbootapp.repositories.ProductoRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProductoServiceImpl implements ProductoService {
@@ -18,5 +19,10 @@ public class ProductoServiceImpl implements ProductoService {
     @Override
     public List<Producto> findAll() throws Exception {
         return this.productoRepository.findAll();
+    }
+
+    @Override
+    public Optional<Producto> findById(Long id) throws Exception {
+        return this.productoRepository.findById(id);
     }
 }

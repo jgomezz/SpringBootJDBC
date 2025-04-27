@@ -7,6 +7,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import pe.edu.tecsup.springbootapp.entities.Producto;
 
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -28,6 +29,23 @@ class ProductoServiceTest {
         //log.info(categorias.toString());
 
         assertEquals(VALUE_EXPECTED, !productos.isEmpty());
+
+    }
+
+    @Test
+    void findById() throws Exception {
+
+        String NAME_EXPECTED = "Kingstone";
+
+        Optional<Producto> productoOptional = this.productoService.findById(1L);
+
+        if ( !productoOptional.isEmpty() ) {
+            Producto producto = productoOptional.get();
+            log.info(producto.toString());
+            assertEquals(NAME_EXPECTED, producto.getNombre());
+        } else {
+            throw new Exception("Producto no encontrado");
+        }
 
     }
 }
