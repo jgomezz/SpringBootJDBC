@@ -3,18 +3,20 @@ package pe.edu.tecsup.springbootapp.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pe.edu.tecsup.springbootapp.entities.Categoria;
+import pe.edu.tecsup.springbootapp.entities.Producto;
 import pe.edu.tecsup.springbootapp.repositories.CategoriaRepository;
+import pe.edu.tecsup.springbootapp.repositories.ProductoRepository;
 
 import java.util.List;
 
 @Service
-public class CategoriaServiceImpl implements CategoriaService {
+public class ProductoServiceImpl implements ProductoService {
 
     @Autowired
-    CategoriaRepository categoriaRepository;
+    ProductoRepository productoRepository;
 
     @Override
-    public List<Categoria> findAll() throws Exception {
-        return this.categoriaRepository.findAll();
+    public List<Producto> findAll() throws Exception {
+        return this.productoRepository.findAll();
     }
 }

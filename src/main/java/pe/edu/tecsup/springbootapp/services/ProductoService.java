@@ -1,11 +1,12 @@
 package pe.edu.tecsup.springbootapp.services;
 
 import pe.edu.tecsup.springbootapp.entities.Categoria;
+import pe.edu.tecsup.springbootapp.entities.Producto;
 
 import java.util.List;
 
-public interface CategoriaService {
+public interface ProductoService {
 
-    List<Categoria> findAll() throws Exception;
+    List<Producto> findAll() throws Exception;
 
 }

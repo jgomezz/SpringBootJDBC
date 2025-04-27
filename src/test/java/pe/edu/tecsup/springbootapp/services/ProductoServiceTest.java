@@ -4,30 +4,30 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import pe.edu.tecsup.springbootapp.entities.Categoria;
+import pe.edu.tecsup.springbootapp.entities.Producto;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @Slf4j
 @SpringBootTest
-class CategoriaServiceTest {
+class ProductoServiceTest {
 
     @Autowired
-    CategoriaService categoriaService;
+    ProductoService productoService;
 
     @Test
     void findAll() throws Exception {
 
         Boolean VALUE_EXPECTED = true;
 
-        List<Categoria> categorias = this.categoriaService.findAll();
+        List<Producto> productos = this.productoService.findAll();
 
-        categorias.stream().forEach(cat -> log.info(cat.getNombre()));
+        productos.stream().forEach(prod -> log.info(prod.getNombre()));
         //log.info(categorias.toString());
 
-        assertEquals(VALUE_EXPECTED, !categorias.isEmpty());
+        assertEquals(VALUE_EXPECTED, !productos.isEmpty());
 
     }
 }
