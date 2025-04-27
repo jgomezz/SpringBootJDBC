@@ -1,20 +1,19 @@
 package pe.edu.tecsup.springbootapp.repositories;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import pe.edu.tecsup.springbootapp.entities.Categoria;
-
 import java.util.List;
 
 @Repository
 public class CategoriaRepositoryImpl implements CategoriaRepository {
 
+    @Autowired
+    JdbcTemplate jdbcTemplate;
+
     @Override
     public List<Categoria> findAll() throws Exception {
-
-        Categoria cat = new Categoria();
-
-        cat.setNombre("Robot");
-        String sc = cat.getNombre();
 
         return List.of();
     }

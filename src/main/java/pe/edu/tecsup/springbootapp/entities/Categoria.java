@@ -1,6 +1,5 @@
 package pe.edu.tecsup.springbootapp.entities;
 
-
 import lombok.Data;
 
 @Data
