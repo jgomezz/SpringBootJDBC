@@ -10,6 +10,7 @@ import pe.edu.tecsup.springbootapp.repositories.CategoriaRepository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -47,5 +48,13 @@ public class CategoriaServiceImpl implements CategoriaService {
 
 
         return categoriasDTO;
+    }
+
+    @Override
+    public Optional<CategoriaDTO> findById(Long id) throws Exception {
+
+        return this.categoriaRepository.findById(id)
+                .map(this.categoriaMapper::mapToDTO);
+
     }
 }

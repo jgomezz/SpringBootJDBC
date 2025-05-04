@@ -8,6 +8,7 @@ import pe.edu.tecsup.springbootapp.dto.CategoriaDTO;
 import pe.edu.tecsup.springbootapp.entities.Categoria;
 
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -30,4 +31,23 @@ class CategoriaServiceTest {
         assertEquals(VALUE_EXPECTED, !categorias.isEmpty());
 
     }
+
+    @Test
+    void findById() throws Exception {
+
+        String NAME_EXPECTED = "Procesadores";
+
+        Optional<CategoriaDTO> categoriaDTOOptional
+                = this.categoriaService.findById(1L);
+
+        if ( categoriaDTOOptional.isPresent() ) {
+            CategoriaDTO categoriaDTO = categoriaDTOOptional.get();
+            log.info(categoriaDTO.toString());
+            assertEquals(NAME_EXPECTED, categoriaDTO.getNombre());
+        } else {
+            throw new Exception("Categoria no encontrada");
+        }
+
+    }
+
 }
