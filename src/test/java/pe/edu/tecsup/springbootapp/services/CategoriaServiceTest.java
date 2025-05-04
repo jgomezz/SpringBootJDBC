@@ -25,7 +25,7 @@ class CategoriaServiceTest {
 
         List<CategoriaDTO> categorias = this.categoriaService.findAll();
 
-        categorias.stream().forEach(cat -> log.info(cat.getNombre()));
+        categorias.forEach(cat -> log.info(cat.getNombre()));
 
         assertEquals(VALUE_EXPECTED, !categorias.isEmpty());
 

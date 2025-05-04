@@ -34,6 +34,9 @@ public class CategoriaRepositoryImpl implements CategoriaRepository {
 
 }
 
+/**
+ * Inner class
+ */
 class CategoriaRowMapper implements RowMapper<Categoria>{
 
     @Override
