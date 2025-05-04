@@ -34,6 +34,20 @@ class ProductoServiceTest {
     }
 
     @Test
+    void findByName() throws Exception {
+
+        Boolean VALUE_EXPECTED = true;
+
+        List<ProductoDTO> productos = this.productoService.findByNombre("AMD");
+
+        log.info("Print by productos");
+        productos.forEach(prod -> log.info(prod.getNombre()));
+
+        assertEquals(VALUE_EXPECTED, !productos.isEmpty());
+    }
+
+
+    @Test
     void findById() throws Exception {
 
         String NAME_EXPECTED = "Kingstone";

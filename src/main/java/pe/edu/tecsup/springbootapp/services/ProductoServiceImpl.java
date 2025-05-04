@@ -34,6 +34,14 @@ public class ProductoServiceImpl implements ProductoService {
     }
 
     @Override
+    public List<ProductoDTO> findByNombre(String nombre) throws Exception {
+        return this.productoRepository.findByNombre(nombre)
+                .stream()
+                .map(this.productoMapper::mapToDTO)
+                .collect(Collectors.toList());    }
+
+
+    @Override
     public Optional<ProductoDTO> findById(Long id) throws Exception {
         return this.productoRepository.findById(id)
                 .map(this.productoMapper::mapToDTO);

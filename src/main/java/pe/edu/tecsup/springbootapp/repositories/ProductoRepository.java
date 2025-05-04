@@ -10,6 +10,8 @@ public interface ProductoRepository {
 
      List<Producto> findAll() throws Exception;
 
+     List<Producto> findByNombre(String nombre) throws Exception;
+
      Optional<Producto> findById(Long id) throws Exception;
 
 }
