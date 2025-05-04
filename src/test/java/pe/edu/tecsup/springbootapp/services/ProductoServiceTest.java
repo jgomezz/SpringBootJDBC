@@ -38,12 +38,13 @@ class ProductoServiceTest {
 
         String NAME_EXPECTED = "Kingstone";
 
-        Optional<Producto> productoOptional = this.productoService.findById(1L);
+        Optional<ProductoDTO> productoOptional
+                = this.productoService.findById(1L);
 
-        if ( !productoOptional.isEmpty() ) {
-            Producto producto = productoOptional.get();
-            log.info(producto.toString());
-            assertEquals(NAME_EXPECTED, producto.getNombre());
+        if (productoOptional.isPresent()) {
+            ProductoDTO productoDTO = productoOptional.get();
+            log.info(productoDTO.toString());
+            assertEquals(NAME_EXPECTED, productoDTO.getNombre());
         } else {
             throw new Exception("Producto no encontrado");
         }

@@ -11,5 +11,5 @@ public interface ProductoService {
 
     List<ProductoDTO> findAll() throws Exception;
 
-    Optional<Producto> findById(Long id) throws Exception;
+    Optional<ProductoDTO> findById(Long id) throws Exception;
 }

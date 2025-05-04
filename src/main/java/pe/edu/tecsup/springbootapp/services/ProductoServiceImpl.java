@@ -34,7 +34,8 @@ public class ProductoServiceImpl implements ProductoService {
     }
 
     @Override
-    public Optional<Producto> findById(Long id) throws Exception {
-        return this.productoRepository.findById(id);
+    public Optional<ProductoDTO> findById(Long id) throws Exception {
+        return this.productoRepository.findById(id)
+                .map(this.productoMapper::mapToDTO);
     }
 }
