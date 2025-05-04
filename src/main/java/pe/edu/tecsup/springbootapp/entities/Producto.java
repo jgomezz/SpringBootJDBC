@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 
@@ -14,7 +15,7 @@ import java.util.Date;
 public class Producto {
 
     private Long id;
-    private Long categorias_id;
+    private Long categoria_id;
     private Categoria categoria;
     private String nombre;
     private String descripcion;
@@ -24,7 +25,7 @@ public class Producto {
     private String imagen_tipo;
     private Long imagen_tamanio;
     private Integer estado;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date creado;
+    //@DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDateTime creado;
 
 }

@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import pe.edu.tecsup.springbootapp.dto.ProductoDTO;
-import pe.edu.tecsup.springbootapp.entities.Producto;
 
 import java.util.List;
 import java.util.Optional;
@@ -64,4 +63,31 @@ class ProductoServiceTest {
         }
 
     }
+
+    @Test
+    void save() throws Exception {
+
+        List<ProductoDTO> productoDTOS = this.productoService.findAll();
+        int totalAntes = productoDTOS.size();
+
+        //CategoriaDTO categoriaDTO = new CategoriaDTO();
+        //categoriaDTO.setId(1L);
+
+        ProductoDTO productoDTO = new ProductoDTO();
+        productoDTO.setCategoria_id(1L);
+        productoDTO.setNombre("AMD");
+        productoDTO.setDescripcion("AMD X10");
+        productoDTO.setPrecio(280.0);
+        productoDTO.setStock(6);
+        productoDTO.setEstado(1);
+
+        this.productoService.save(productoDTO);
+
+        productoDTOS = this.productoService.findAll();
+        int totalDespues = productoDTOS.size();
+
+        assertEquals(1, totalDespues - totalAntes);
+    }
+
+
 }

@@ -4,6 +4,8 @@ import org.springframework.stereotype.Component;
 import pe.edu.tecsup.springbootapp.dto.ProductoDTO;
 import pe.edu.tecsup.springbootapp.entities.Producto;
 
+import java.time.LocalDateTime;
+
 @Component
 public class ProductoMapper {
 
@@ -25,8 +27,21 @@ public class ProductoMapper {
 
     }
 
-    public Producto mapToEntity(ProductoDTO dto) {
-        return null;
+    public Producto mapToEntity(ProductoDTO productoDTO) {
+        Producto producto = new Producto();
+        producto.setId(productoDTO.getId());
+        producto.setNombre(productoDTO.getNombre());
+        producto.setDescripcion(productoDTO.getDescripcion());
+        producto.setPrecio(productoDTO.getPrecio());
+        producto.setStock(productoDTO.getStock());
+        producto.setImagen_nombre(productoDTO.getImagen_nombre());
+        //producto.setCategoria(this.categoriaMapper.mapToEntity(productoDTO.getCategoriaDTO()));
+        producto.setCategoria_id(productoDTO.getCategoria_id());
+
+        if (producto.getCreado() == null)
+            producto.setCreado(LocalDateTime.now());
+        producto.setEstado(1); // Active by default
+        return producto;
     }
 
 }

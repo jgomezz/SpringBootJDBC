@@ -84,6 +84,44 @@ public class ProductoRepositoryImpl implements ProductoRepository {
         return Optional.of(producto);
     }
 
+    @Override
+    public void save(Producto producto) throws Exception {
+        log.info("call save()");
+
+        String sql =
+                """
+                   INSERT INTO  productos (categorias_id, nombre, descripcion, precio, stock, estado,
+                                     imagen_nombre, imagen_tipo, imagen_tamanio)
+                   VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+                """;
+
+        this.jdbcTemplate.update(sql,
+                //producto.getCategoria().getId(),
+                producto.getCategoria_id(),
+                producto.getNombre(),
+                producto.getDescripcion(),
+                producto.getPrecio(),
+                producto.getStock(),
+                producto.getEstado(),
+                producto.getImagen_nombre(),
+                producto.getImagen_tipo(),
+                producto.getImagen_tamanio());
+    }
+
+    @Override
+    public void update(Long id, String nombreProducto) throws Exception {
+        log.info("call update()");
+        String sql = "UPDATE productos SET  nombre = ?  WHERE id = ?";
+        jdbcTemplate.update(sql, nombreProducto, id);
+    }
+
+    @Override
+    public void deleteById(Long id) throws Exception {
+        log.info("call deleteById()");
+        String sql = "DELETE FROM productos WHERE id = ?";
+        jdbcTemplate.update(sql, id);
+    }
+
 }
 
 class ProductoRowMapper implements RowMapper<Producto>{
@@ -99,7 +137,7 @@ class ProductoRowMapper implements RowMapper<Producto>{
         // Set producto
         Producto producto = new Producto();
         producto.setId(rs.getLong("id"));
-        producto.setCategorias_id(rs.getLong("categorias_id"));
+        producto.setCategoria_id(rs.getLong("categorias_id"));
         producto.setCategoria(categoria);
         producto.setNombre(rs.getString("nombre"));
         producto.setDescripcion(rs.getString("descripcion"));

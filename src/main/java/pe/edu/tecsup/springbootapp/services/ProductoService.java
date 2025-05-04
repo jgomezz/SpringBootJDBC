@@ -14,4 +14,11 @@ public interface ProductoService {
     List<ProductoDTO> findByNombre(String nombre) throws Exception;
 
     Optional<ProductoDTO> findById(Long id) throws Exception;
+
+    void save(ProductoDTO productoDTO) throws Exception;
+
+    void deleteById(Long id) throws Exception;
+
+    void update(Long id, String nombreProducto) throws Exception;
+
 }

@@ -14,4 +14,11 @@ public interface ProductoRepository {
 
      Optional<Producto> findById(Long id) throws Exception;
 
+     void save(Producto producto) throws Exception;
+
+     void update(Long id, String nombreProducto) throws Exception;
+
+     void deleteById(Long id) throws Exception;
+
+
 }
