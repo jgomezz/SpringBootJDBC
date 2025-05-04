@@ -108,5 +108,32 @@ class ProductoServiceTest {
         assertEquals(1, totalAntes - totalDespues);
     }
 
+    @Test
+    void update() throws Exception {
 
+        // Actualizar el nombre del producto
+        Long id = 1L; // Relacionado con tus datos de pruebas
+        String NOMBRE_ORIGINAL = "Kingstone" ;
+        String NOMBRE_A_CAMBIAR = "Kingstone Cambiado" ;
+        ProductoDTO productoDTO = null;
+
+        // Actualizar
+        productoService.update(id, NOMBRE_A_CAMBIAR);
+
+        // Buscar el producto
+        productoDTO = productoService.findById(id).get();
+
+        // Verificar que el nombre ha sido cambiado
+        assertEquals(NOMBRE_A_CAMBIAR, productoDTO.getNombre());
+
+        // Actualizar
+        productoService.update(id, NOMBRE_ORIGINAL);
+
+        // Buscar el producto
+        productoDTO = productoService.findById(id).get();
+
+        // Verificar que el nombre ha sido cambiado
+        assertEquals(NOMBRE_ORIGINAL,productoDTO.getNombre());
+
+    }
 }
