@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import pe.edu.tecsup.springbootapp.dto.ProductoDTO;
 import pe.edu.tecsup.springbootapp.entities.Producto;
 
 import java.util.List;
@@ -23,9 +24,9 @@ class ProductoServiceTest {
 
         Boolean VALUE_EXPECTED = true;
 
-        List<Producto> productos = this.productoService.findAll();
+        List<ProductoDTO> productos = this.productoService.findAll();
 
-        productos.stream().forEach(prod -> log.info(prod.getNombre()));
+        productos.forEach(prod -> log.info(prod.getNombre()));
         //log.info(categorias.toString());
 
         assertEquals(VALUE_EXPECTED, !productos.isEmpty());
