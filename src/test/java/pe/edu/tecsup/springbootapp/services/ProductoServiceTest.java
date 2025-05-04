@@ -90,4 +90,23 @@ class ProductoServiceTest {
     }
 
 
+    @Test
+    void deleteById() throws Exception {
+
+        List<ProductoDTO> productoDTOS = this.productoService.findAll();
+        int totalAntes = productoDTOS.size();
+        if (productoDTOS.isEmpty()) {
+            return; // test pass
+        }
+
+        ProductoDTO ultimoProductoDTO = productoDTOS.get(productoDTOS.size() - 1);
+        this.productoService.deleteById(ultimoProductoDTO.getId());
+
+        productoDTOS = this.productoService.findAll();
+        int totalDespues = productoDTOS.size();
+
+        assertEquals(1, totalAntes - totalDespues);
+    }
+
+
 }
